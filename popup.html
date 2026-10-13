@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <h1>网页文字模拟器</h1>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="fill">文字填充</button>
+    <button class="tab" data-tab="novel">小说阅读</button>
+  </nav>
+
+  <!-- 文字填充模式 -->
+  <div id="tab-fill" class="tab-page">
+    <section class="input-area">
+      <div class="toolbar">
+        <label class="file-btn" for="fileInput">上传文本文件</label>
+        <input id="fileInput" type="file" accept=".txt,.md,.text,.log,.csv,.json" hidden>
+        <span id="charCount" class="count">0 字</span>
+      </div>
+      <textarea id="textInput" placeholder="在这里粘贴文本，或点击上方按钮上传 .txt / .md 文件…" spellcheck="false"></textarea>
+    </section>
+
+    <section class="options">
+      <label class="opt">
+        <input type="checkbox" id="loopFill" checked>
+        <span>文本不够时循环填满整页</span>
+      </label>
+      <label class="opt">
+        <input type="checkbox" id="skipShort">
+        <span>保留按钮/导航等超短文字</span>
+      </label>
+    </section>
+
+    <section class="actions">
+      <button id="fillBtn" class="primary">填充到当前页面</button>
+      <button id="restoreBtn" class="ghost">还原原始内容</button>
+    </section>
+  </div>
+
+  <!-- 小说阅读模式 -->
+  <div id="tab-novel" class="tab-page" hidden>
+    <section class="input-area">
+      <div class="toolbar">
+        <label class="file-btn" for="novelInput">上传小说（.txt）</label>
+        <input id="novelInput" type="file" accept=".txt,.text" hidden>
+        <span id="novelCount" class="count"></span>
+      </div>
+      <div id="novelInfo" class="novel-info empty">尚未载入小说</div>
+    </section>
+
+    <section class="actions">
+      <button id="openReaderBtn" class="primary">在当前页面打开阅读器</button>
+      <button id="clearNovelBtn" class="ghost">移除小说</button>
+    </section>
+
+    <section class="options">
+      <label class="opt key-opt" for="bossKeyInput">
+        <span>老板键（隐藏/恢复）</span>
+        <input id="bossKeyInput" class="key-input" readonly value="`" title="点击后按下新快捷键">
+      </label>
+    </section>
+
+    <p class="tip">点击上方按键框后按下新快捷键即可修改，支持 Ctrl / Alt / Shift 组合键；关闭阅读器后阅读进度自动保留。</p>
+  </div>
+
+  <p id="status" class="status"></p>
+
+  <script src="popup.js"></script>
+</body>
+</html>

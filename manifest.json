@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "网页文字模拟器",
+  "version": "1.0.0",
+  "description": "保留任意网页的排版样式，把文字内容替换为你上传的文本。",
+  "permissions": ["activeTab", "scripting", "storage", "unlimitedStorage"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "网页文字模拟器"
+  }
+}
